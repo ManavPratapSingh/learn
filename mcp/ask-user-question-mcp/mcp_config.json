@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "ask-user-question": {
+      "command": "python3",
+      "args": ["/home/manav/learn/mcp/ask-user-question-mcp/server.py"],
+      "env": {}
+    }
+  }
+}

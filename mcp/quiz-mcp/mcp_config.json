@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "quiz": {
+      "command": "node",
+      "args": ["./quiz-mcp/dist/index.js"],
+      "env": {}
+    }
+  }
+}
