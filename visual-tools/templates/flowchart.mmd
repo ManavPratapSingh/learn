@@ -1,0 +1,10 @@
+graph TD
+  A[Client Request] --> B[API Gateway]
+  B --> C[Authentication Service]
+  C --> D{Authorized?}
+  D -- Yes --> E[Core Application Service]
+  D -- No --> F[401 Unauthorized Response]
+  E --> G[(Database Cluster)]
+  G --> E
+  E --> B
+  B --> H[Client Response]

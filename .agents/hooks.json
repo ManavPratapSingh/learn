@@ -1,0 +1,16 @@
+{
+  "auto-allow-teaching-tools": {
+    "PreToolUse": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 /home/manav/learn/.agents/hooks/hooks_auto_allow.py",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}

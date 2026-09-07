@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "md-log": {
+      "command": "node",
+      "args": ["./md-log-mcp/dist/index.js"],
+      "env": {}
+    }
+  }
+}
