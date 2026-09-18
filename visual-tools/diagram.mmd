@@ -1,3 +1,17 @@
-graph TD
-  A[User] --> B[API Gateway]
-  B --> C[Microservice Cluster]
+flowchart TD
+    X["Input Image X"] --> T["Large Teacher Network (Frozen)\n(e.g. 100M parameters)"]
+    X --> S["Small Student Network (Trainable)\n(e.g. 5M parameters)"]
+
+    T --> PT["Teacher Soft Targets (Dark Knowledge)\n[Dog: 85%, Cat: 14%, Bear: 1%]"]
+    S --> PS["Student Soft Output Predictions\n[Dog: 70%, Cat: 20%, Bear: 10%]"]
+
+    PT --> L_KL["KL-Divergence Loss\nL_distill = KL(PT || PS)"]
+    PS --> L_KL
+
+    PS --> L_CE["Cross-Entropy Task Loss\nL_task = CE(y_true, PS)"]
+    GT["Ground Truth Label y_true\n[Dog: 1, Cat: 0, Bear: 0]"] --> L_CE
+
+    L_KL --> TOTAL["Total Combined Loss L\n(L = alpha * L_distill + beta * L_task)"]
+    L_CE --> TOTAL
+
+    TOTAL --> SGD["SGD Backpropagation\n(Updates ONLY Student Weights W_S)"]
